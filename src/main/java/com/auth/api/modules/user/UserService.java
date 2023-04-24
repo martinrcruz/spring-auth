@@ -65,7 +65,7 @@ public class UserService implements UserDetailsService {
         User auxUser;
         try {
             log.debug("addUser function");
-            Set<Role> role = roleRepository.getRoleByName(UserRole.ROLE_USER);
+            Role role = roleRepository.getRoleByName(UserRole.ROLE_USER);
             User newUser = new User();
             newUser.setEmail(user.getEmail());
             newUser.setUsername(user.getUsername());

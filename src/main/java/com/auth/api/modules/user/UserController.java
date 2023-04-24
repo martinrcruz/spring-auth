@@ -20,7 +20,7 @@ import java.util.Set;
 
 @Log4j2
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -28,35 +28,6 @@ public class UserController {
     @Autowired
     private RoleRepository roleRepository;
 
-    @PostMapping("/public/register")
-    public ResponseEntity<Void> register(@RequestBody CreateUserRequest user) {
-        log.debug("calling register endpoint");
-        if (userService.findUserByUsername(user.getUsername()).isPresent()) {return ResponseEntity.status(HttpStatus.CONFLICT).build();}
-        try {
-            log.debug("calling user service -> addUser");
-            userService.addUser(user);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-
-        }catch (Exception e){
-            log.error("error on add user");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
-
-    @PostMapping("/auth/login")
-    public ResponseEntity<Void> login(@RequestBody UserCredential user) throws Exception {
-
-        log.debug("calling login endpoint");
-        try {
-            log.debug("calling JWT Auth Filter -> login.authenticate");
-            userService.addUser(user);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-
-        }catch (Exception e){
-            log.error("error on login user");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
 
     @GetMapping("/private")
     public ResponseEntity<String> privateEndpoint() {

@@ -3,13 +3,15 @@ package com.auth.api.util;
 import com.auth.api.modules.role.Role;
 import lombok.Data;
 
+import java.util.Collection;
 import java.util.Set;
 
 @Data
-public class CreateUserRequest {
+public class UserAuthResponse {
+    Long id;
     String username;
-    String password;
+    String token;
     String email;
-    String firstName;
-    String lastName;
+    Role role;
+    Collection grants;
 }

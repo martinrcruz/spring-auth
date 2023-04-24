@@ -10,5 +10,5 @@ public class UserDTO {
     Long id;
     String username;
     String email;
-    Set<Role> role;
+    Role role;
 }

@@ -6,10 +6,11 @@ import lombok.Data;
 import java.util.Set;
 
 @Data
-public class CreateUserRequest {
+public class UserRegisterResponse {
+    Long id;
     String username;
-    String password;
     String email;
-    String firstName;
-    String lastName;
+    Role role;
+    String createdAt;
+
 }
